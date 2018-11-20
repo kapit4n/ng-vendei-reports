@@ -6,7 +6,9 @@ import { Observable } from "rxjs";
 export interface ISell {
   id: string;
   productId: number;
+  product: any;
   price: number;
+  totalPrice: number;
   quantity: number;
 }
 

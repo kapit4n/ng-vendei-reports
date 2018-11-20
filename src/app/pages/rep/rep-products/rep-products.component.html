@@ -1,3 +1,18 @@
-<p>
-  rep-products works!
-</p>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>Product</th>
+      <th>Quantity Selled</th>
+      <th>Total Sell</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let product of products">
+      <td>{{product.name}}</td>
+      <td>{{product.quantitySelled}}</td>
+      <td>{{product.totalSells}}</td>
+      <td>
+        <button class="btn" (click)="openProductRep(product.id)"><i class="fa fa-folder"></i></button> &nbsp;
+      </td>
+    </tr>
+  </table>
+</div>
