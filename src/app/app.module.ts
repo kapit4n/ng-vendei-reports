@@ -11,6 +11,7 @@ import { RepSellsComponent } from './pages/rep/rep-sells/rep-sells.component';
 
 import { RepConfigService } from "./services/rep/rep-config.service";
 import { RepProductsService } from "./services/rep/rep-products.service";
+import { RepSellsService } from "./services/rep/rep-sells.service";
 
 
 const appRoutes: Routes = [
@@ -42,7 +43,7 @@ const appRoutes: Routes = [
     NgbModule,
     HttpClientModule
   ],
-  providers: [ RepConfigService, RepProductsService ],
+  providers: [ RepConfigService, RepProductsService, RepSellsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
