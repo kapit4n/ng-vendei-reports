@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {
     path: "rep/products",
     component: RepProductsComponent,
-    data: { breadcrumb: "Inv Products" }
+    data: { breadcrumb: "Rep Products" }
   },
   {
     path: "rep/sells",
@@ -27,7 +27,7 @@ const appRoutes: Routes = [
   },
   {
     path: "",
-    redirectTo: "rep/products",
+    redirectTo: "rep/sells",
     pathMatch: "full"
   }
 ];

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+
+import { RepSellsService, ISell } from "../../../services/rep/rep-sells.service";
 
 @Component({
   selector: 'app-rep-sells',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RepSellsComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit() {
+  sells: ISell[];
+  constructor(
+    private sellsSrv: RepSellsService,
+    private router: Router) {
+    this.sells = [];
   }
 
+  ngOnInit() {
+    this.sellsSrv.getAll().subscribe(p => (this.sells = p));
+  }
+
+  openSellRep(sellId: string) {
+    this.router.navigate(["/inv/sells/" + sellId]);
+  }
 }

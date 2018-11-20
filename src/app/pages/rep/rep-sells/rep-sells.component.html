@@ -1,3 +1,22 @@
-<p>
-  rep-sells works!
-</p>
+<div class="container">
+  <table class="table">
+    <tr>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total Price</th>
+      <th>Discount</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let sell of sells">
+      <td>{{sell.product.name}}</td>
+      <td>{{sell.quantity}}</td>
+      <td>{{sell.price}}</td>
+      <td>{{sell.totalPrice}}</td>
+      <td>{{sell.discount}}</td>
+      <td>
+        <button class="btn" (click)="openSellRep(sell.id)"><i class="fa fa-folder"></i></button> &nbsp;
+      </td>
+    </tr>
+  </table>
+</div>
