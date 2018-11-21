@@ -16,7 +16,6 @@ import { RepOrdersComponent } from './pages/rep/rep-orders/rep-orders.component'
 import { RepSellsByOrderComponent } from './pages/rep/rep-sells-by-order/rep-sells-by-order.component';
 import { RepSellsByProductComponent } from './pages/rep/rep-sells-by-product/rep-sells-by-product.component';
 
-
 const appRoutes: Routes = [
   {
     path: "rep/products",

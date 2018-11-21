@@ -18,12 +18,14 @@ export interface ISell {
 export class RepSellsService {
   modelUrl: string;
   includeProd: string;
+  includeOrder: string;
   constructor(private http: HttpClient, private configSvc: RepConfigService) {
     this.modelUrl = this.configSvc.baseUrl + "/orderDetails";
     this.includeProd = "filter[include]=product";
+    this.includeOrder = "filter[include]=order";
   }
 
   getAll(): Observable<any> {
-    return this.http.get(`${this.modelUrl}?${this.includeProd}`);
+    return this.http.get(`${this.modelUrl}?${this.includeProd}&${this.includeOrder}`);
   }
 }
