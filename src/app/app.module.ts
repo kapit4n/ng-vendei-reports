@@ -12,8 +12,6 @@ import { RepSellsComponent } from './pages/rep/rep-sells/rep-sells.component';
 import { RepConfigService } from "./services/rep/rep-config.service";
 import { RepProductsService } from "./services/rep/rep-products.service";
 import { RepSellsService } from "./services/rep/rep-sells.service";
-import { SellsByProductComponent } from './pages/rep/sells-by-product/sells-by-product.component';
-import { SellsByOrderComponent } from './pages/rep/sells-by-order/sells-by-order.component';
 import { RepOrdersComponent } from './pages/rep/rep-orders/rep-orders.component';
 import { RepSellsByOrderComponent } from './pages/rep/rep-sells-by-order/rep-sells-by-order.component';
 import { RepSellsByProductComponent } from './pages/rep/rep-sells-by-product/rep-sells-by-product.component';
@@ -39,7 +37,7 @@ const appRoutes: Routes = [
 
 
 @NgModule({
-  declarations: [AppComponent, RepProductsComponent, RepSellsComponent, SellsByProductComponent, SellsByOrderComponent, RepOrdersComponent, RepSellsByOrderComponent, RepSellsByProductComponent],
+  declarations: [AppComponent, RepProductsComponent, RepSellsComponent, RepOrdersComponent, RepSellsByOrderComponent, RepSellsByProductComponent],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes, { enableTracing: true }),
