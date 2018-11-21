@@ -20,13 +20,15 @@ export class RepSellsService {
   modelUrl: string;
   includeProd: string;
   includeOrder: string;
+  orderBy: string;
   constructor(private http: HttpClient, private configSvc: RepConfigService) {
     this.modelUrl = this.configSvc.baseUrl + "/orderDetails";
     this.includeProd = "filter[include]=product";
     this.includeOrder = "filter[include]=order";
+    this.orderBy = "filter[order]=createdDate%20DESC"
   }
 
   getAll(): Observable<any> {
-    return this.http.get(`${this.modelUrl}?${this.includeProd}&${this.includeOrder}`);
+    return this.http.get(`${this.modelUrl}?${this.includeProd}&${this.includeOrder}&${this.orderBy}`);
   }
 }
