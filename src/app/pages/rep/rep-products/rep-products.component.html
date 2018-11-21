@@ -3,15 +3,15 @@
     <tr>
       <th>Product</th>
       <th>Quantity Selled</th>
-      <th>Total Sell</th>
+      <th>Total Selled</th>
       <th></th>
     </tr>
     <tr *ngFor="let product of products">
       <td>{{product.name}}</td>
       <td>{{product.quantitySelled}}</td>
-      <td>{{product.totalSells}}</td>
+      <td>{{product.totalSelled}}</td>
       <td>
-        <button class="btn" (click)="openProductRep(product.id)"><i class="fa fa-folder"></i></button> &nbsp;
+        <button class="btn" (click)="openProductRep(product.id)" *ngIf="false"><i class="fa fa-folder"></i></button> &nbsp;
       </td>
     </tr>
   </table>

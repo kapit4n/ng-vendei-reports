@@ -5,7 +5,6 @@
       <th>Quantity</th>
       <th>Price</th>
       <th>Total Price</th>
-      <th>Discount</th>
       <th>Date</th>
       <th></th>
     </tr>
@@ -14,10 +13,9 @@
       <td>{{sell.quantity}}</td>
       <td>{{sell.price}}</td>
       <td>{{sell.totalPrice}}</td>
-      <td>{{sell.discount}}</td>
-      <td>{{sell.createdDate}}</td>
+      <td>{{sell.createdDate | date:'medium'}}</td>
       <td>
-        <button class="btn" (click)="openSellRep(sell.id)"><i class="fa fa-folder"></i></button> &nbsp;
+        <button class="btn" (click)="openSellRep(sell.id)" *ngIf="false"><i class="fa fa-folder"></i></button> &nbsp;
       </td>
     </tr>
   </table>
