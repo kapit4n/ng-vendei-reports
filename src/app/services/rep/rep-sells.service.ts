@@ -7,6 +7,7 @@ export interface ISell {
   id: string;
   productId: number;
   product: any;
+  order: any;
   price: number;
   totalPrice: number;
   quantity: number;
