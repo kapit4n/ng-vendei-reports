@@ -1,34 +1,35 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { RepConfigService } from "./rep-config.service";
-import { Observable } from "rxjs";
+import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
-export interface ISell {
-  id: string;
-  productId: number;
-  product: any;
-  order: any;
-  price: number;
-  totalPrice: number;
-  quantity: number;
-}
+import {
+  RepSellsService,
+  ISell
+} from "../../../services/rep/rep-sells.service";
 
-@Injectable({
-  providedIn: "root"
+@Component({
+  selector: "app-rep-sells",
+  templateUrl: "./rep-sells.component.html",
+  styleUrls: ["./rep-sells.component.css"]
 })
-export class RepSellsService {
-  modelUrl: string;
-  includeProd: string;
-  includeOrder: string;
-  orderBy: string;
-  constructor(private http: HttpClient, private configSvc: RepConfigService) {
-    this.modelUrl = this.configSvc.baseUrl + "/orderDetails";
-    this.includeProd = "filter[include]=product";
-    this.includeOrder = "filter[include]=order";
-    this.orderBy = "filter[order]=createdDate%20DESC"
+export class RepSellsComponent implements OnInit {
+  sells: ISell[];
+  constructor(private sellsSrv: RepSellsService, private router: Router) {
+    this.sells = [];
   }
 
-  getAll(): Observable<any> {
-    return this.http.get(`${this.modelUrl}?${this.includeProd}&${this.includeOrder}&${this.orderBy}`);
+  ngOnInit() {
+    this.sellsSrv.getAll().subscribe(p => (this.sells = p));
+  }
+
+  openSellRep(sellId: string) {
+    this.router.navigate(["/inv/sells/" + sellId]);
+  }
+
+  openProducts() {
+    this.router.navigate(["/rep/products"]);
+  }
+
+  openCart() {
+    this.router.navigate([""]);
   }
 }
