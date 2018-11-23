@@ -23,16 +23,7 @@ export class RepSellsComponent implements OnInit {
   ngOnInit() {
     this.sellsSrv.getAll().subscribe(p => {
       this.sells = p;
-      let monthlyData: Array = new Array();
-      this.sells.forEach(sell => {
-        let createdDate = new Date(sell.createdDate);
-        let keyData = createdDate.getFullYear() + "-" + (createdDate.getMonth() + 1);
-        if (monthlyData[keyData]) {
-          monthlyData[keyData] = monthlyData[keyData] + Number(sell.totalPrice);
-        } else {
-          monthlyData[keyData] = Number(sell.totalPrice);
-        }
-      });
+      let monthlyData: Array = this.monthlyData(p);
 
       this.monthlyChart = new Chart(this.chartRef.nativeElement, {
         type: "bar",
@@ -65,6 +56,34 @@ export class RepSellsComponent implements OnInit {
         }
       });
     });
+  }
+
+  monthlyData(sells: any) {
+    let monthlyData: Array = new Array();
+    sells.forEach(sell => {
+      let createdDate = new Date(sell.createdDate);
+      let keyData = createdDate.getFullYear() + "-" + (createdDate.getMonth() + 1);
+      if (monthlyData[keyData]) {
+        monthlyData[keyData] = monthlyData[keyData] + Number(sell.totalPrice);
+      } else {
+        monthlyData[keyData] = Number(sell.totalPrice);
+      }
+    });
+    return monthlyData
+  }
+
+  dailyData(sells: any) {
+    let dailyData: Array = new Array();
+    sells.forEach(sell => {
+      let createdDate = new Date(sell.createdDate);
+      let keyData = (createdDate.getMonth() + 1) + "-" + createdDate.getDay();
+      if (dailyData[keyData]) {
+        dailyData[keyData] = dailyData[keyData] + Number(sell.totalPrice);
+      } else {
+        dailyData[keyData] = Number(sell.totalPrice);
+      }
+    });
+    return dailyData
   }
 
   openSellRep(sellId: string) {
