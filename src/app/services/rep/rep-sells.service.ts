@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { RepConfigService } from "./rep-config.service";
 import { Observable } from "rxjs";
@@ -25,10 +25,14 @@ export class RepSellsService {
     this.modelUrl = this.configSvc.baseUrl + "/orderDetails";
     this.includeProd = "filter[include]=product";
     this.includeOrder = "filter[include]=order";
-    this.orderBy = "filter[order]=createdDate%20DESC"
+    this.orderBy = "filter[order]=createdDate%20DESC";
   }
 
   getAll(): Observable<any> {
-    return this.http.get(`${this.modelUrl}?${this.includeProd}&${this.includeOrder}&${this.orderBy}`);
+    return this.http.get(
+      `${this.modelUrl}?${this.includeProd}&${this.includeOrder}&${
+        this.orderBy
+      }`
+    );
   }
 }
