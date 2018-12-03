@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
-import { Chart } from "chart.js";
 
 import {
   RepSellsService,
@@ -14,8 +13,6 @@ import {
 })
 export class RepSellsComponent implements OnInit {
   sells: ISell[];
-  @ViewChild("monthlyChart") private chartRef;
-  monthlyChart: any;
   constructor(private sellsSrv: RepSellsService, private router: Router) {
     this.sells = [];
   }
@@ -23,67 +20,7 @@ export class RepSellsComponent implements OnInit {
   ngOnInit() {
     this.sellsSrv.getAll().subscribe(p => {
       this.sells = p;
-      let monthlyData: Array = this.monthlyData(p);
-
-      this.monthlyChart = new Chart(this.chartRef.nativeElement, {
-        type: "bar",
-        data: {
-          labels: Object.keys(monthlyData),
-          datasets: [
-            {
-              data: Object.values(monthlyData),
-              borderColor: "#00AEFF",
-              fill: false
-            }
-          ]
-        },
-        options: {
-          legend: {
-            display: false
-          },
-          scales: {
-            xAxes: [
-              {
-                display: true
-              }
-            ],
-            yAxes: [
-              {
-                display: true
-              }
-            ]
-          }
-        }
-      });
     });
-  }
-
-  monthlyData(sells: any) {
-    let monthlyData: Array = new Array();
-    sells.forEach(sell => {
-      let createdDate = new Date(sell.createdDate);
-      let keyData = createdDate.getFullYear() + "-" + (createdDate.getMonth() + 1);
-      if (monthlyData[keyData]) {
-        monthlyData[keyData] = monthlyData[keyData] + Number(sell.totalPrice);
-      } else {
-        monthlyData[keyData] = Number(sell.totalPrice);
-      }
-    });
-    return monthlyData
-  }
-
-  dailyData(sells: any) {
-    let dailyData: Array = new Array();
-    sells.forEach(sell => {
-      let createdDate = new Date(sell.createdDate);
-      let keyData = (createdDate.getMonth() + 1) + "-" + createdDate.getDay();
-      if (dailyData[keyData]) {
-        dailyData[keyData] = dailyData[keyData] + Number(sell.totalPrice);
-      } else {
-        dailyData[keyData] = Number(sell.totalPrice);
-      }
-    });
-    return dailyData
   }
 
   openSellRep(sellId: string) {

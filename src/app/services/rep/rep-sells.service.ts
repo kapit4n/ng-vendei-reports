@@ -11,7 +11,7 @@ export interface ISell {
   price: number;
   totalPrice: number;
   quantity: number;
-  createdDate: date
+  createdDate: string;
 }
 
 @Injectable({
