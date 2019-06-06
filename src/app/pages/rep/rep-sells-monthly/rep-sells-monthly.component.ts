@@ -14,7 +14,7 @@ import {
 })
 export class RepSellsMonthlyComponent implements OnInit {
   sells: ISell[];
-  @ViewChild("monthlyChart") private chartRef;
+  @ViewChild("monthlyChart", { static: false }) private chartRef;
   monthlyChart: any;
   constructor(private sellsSrv: RepSellsService, private router: Router) {
     this.sells = [];

@@ -14,7 +14,7 @@ import {
 })
 export class RepSellsDailyComponent implements OnInit {
   sells: ISell[];
-  @ViewChild("dailyChart") private chartRef;
+  @ViewChild("dailyChart", {static: false}) private chartRef;
   dailyChart: any;
   constructor(private sellsSrv: RepSellsService, private router: Router) {
     this.sells = [];
